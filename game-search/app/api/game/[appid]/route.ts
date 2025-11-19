@@ -8,9 +8,9 @@ type SteamAppDetailsResponse = Record<
 
 export async function GET(
   _request: Request,
-  { params }: { params: { appid: string } },
+  { params }: { params: Promise<{ appid: string }> },
 ) {
-  const { appid } = params;
+  const { appid } = await params;
 
   if (!appid) {
     return new Response(

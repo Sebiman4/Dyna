@@ -37,50 +37,102 @@ export default function Home() {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      searchGames();
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-3xl font-bold mb-4 text-center">🎮 Steam Game Finder</h1>
-      <div className="flex gap-2 justify-center mb-8">
-        <input
-          type="text"
-          className="border p-2 rounded w-80 text-black"
-          placeholder="Search game name..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button
-          onClick={searchGames}
-          className="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed"
-          disabled={loading}
-        >
-          {loading ? 'Loading...' : 'Search'}
-        </button>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-12 px-8 shadow-2xl">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl font-extrabold mb-3 text-white drop-shadow-lg">
+            🎮 Steam Game Finder
+          </h1>
+          <p className="text-blue-100 text-lg">Discover your next favorite game</p>
+        </div>
       </div>
 
-      {error && (
-        <p className="text-red-400 text-center mb-6">{error}</p>
-      )}
-
-      {!loading && !error && results.length === 0 && (
-        <p className="text-gray-400 text-center">Belum ada hasil. Cari game favoritmu di sini.</p>
-      )}
-
-      <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-        {results.map((game) => (
-          <div key={game.appid} className="bg-gray-800 p-4 rounded">
-            <img
-              src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/capsule_184x69.jpg`}
-              alt={game.name}
-              className="rounded mb-2"
+      {/* Search Section */}
+      <div className="max-w-2xl mx-auto px-6 -mt-8">
+        <div className="bg-gray-800 rounded-2xl shadow-2xl p-6 border border-gray-700">
+          <div className="flex gap-3">
+            <input
+              type="text"
+              className="flex-1 bg-gray-700 border-2 border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 p-3 rounded-lg text-white placeholder-gray-400 transition-all outline-none"
+              placeholder="Search for any game..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
-            <h2 className="font-semibold">{game.name}</h2>
-            <Link href={`/game/${game.appid}`}
-            className="text-blue-400 hover:underline text-sm"
+            <button
+              onClick={searchGames}
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
+              disabled={loading}
             >
-                View Details →
-            </Link>
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Loading
+                </span>
+              ) : 'Search'}
+            </button>
           </div>
-        ))}
+        </div>
+      </div>
+
+      {/* Results Section */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {error && (
+          <div className="bg-red-900/30 border border-red-500 text-red-300 px-6 py-4 rounded-lg text-center mb-6">
+            {error}
+          </div>
+        )}
+
+        {!loading && !error && results.length === 0 && (
+          <div className="text-center py-20">
+            <div className="text-6xl mb-4">🎯</div>
+            <p className="text-gray-400 text-xl">Start searching to discover amazing games!</p>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {results.map((game) => (
+            <Link
+              key={game.appid}
+              href={`/game/${game.appid}`}
+              className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-700 hover:border-blue-500"
+            >
+              <div className="relative overflow-hidden bg-gray-900">
+                <img
+                  src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/header.jpg`}
+                  alt={game.name}
+                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  onError={(e) => {
+                    e.currentTarget.src = `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/capsule_184x69.jpg`;
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="p-4">
+                <h2 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
+                  {game.name}
+                </h2>
+                <span className="text-blue-400 text-sm font-medium flex items-center gap-1">
+                  View Details 
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
