@@ -1,0 +1,60 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient1)"/>
+  
+  <!-- Gamepad Shape -->
+  <path d="M256 120C186 120 140 150 140 190C140 230 120 280 120 320C120 360 140 390 180 390C210 390 230 370 256 370C282 370 302 390 332 390C372 390 392 360 392 320C392 280 372 230 372 190C372 150 326 120 256 120Z" fill="white" opacity="0.95"/>
+  
+  <!-- D-pad Left -->
+  <rect x="170" y="240" width="50" height="15" rx="3" fill="url(#gradient2)"/>
+  <rect x="182.5" y="227.5" width="15" height="50" rx="3" fill="url(#gradient2)"/>
+  
+  <!-- Buttons Right -->
+  <circle cx="310" cy="240" r="12" fill="url(#gradient3)"/>
+  <circle cx="340" cy="240" r="12" fill="url(#gradient4)"/>
+  <circle cx="325" cy="220" r="12" fill="url(#gradient5)"/>
+  <circle cx="325" cy="260" r="12" fill="url(#gradient6)"/>
+  
+  <!-- Center Badge -->
+  <circle cx="256" cy="280" r="25" fill="url(#gradient7)"/>
+  <text x="256" y="293" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">D</text>
+  
+  <!-- Glow Effect -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#gradient8)" stroke-width="4" opacity="0.5"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4F46E5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
