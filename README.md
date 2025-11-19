@@ -89,14 +89,6 @@ npm run build
 npm run start
 ```
 
-## 🤝 Kontribusi
-
-Kontribusi selalu diterima! Silakan buat pull request atau buka issue untuk saran dan perbaikan.
-
 ## 📄 Lisensi
 
-MIT License - Silakan digunakan untuk pembelajaran atau proyek pribadi!
-
----
-
-**Dibuat dengan ❤️ menggunakan Next.js**
+MIT License 
