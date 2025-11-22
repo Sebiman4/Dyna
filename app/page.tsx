@@ -3,6 +3,7 @@
 'use client';
 import { useState } from 'react';
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -48,9 +49,18 @@ export default function Home() {
       {/* Header Section */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-12 px-8 shadow-2xl">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-extrabold mb-3 text-white drop-shadow-lg">
-            🎮 Steam Game Finder
-          </h1>
+          <div className="flex items-center justify-center gap-4 mb-3">
+            <Image 
+              src="/logo.svg" 
+              alt="Dyna Logo" 
+              width={60} 
+              height={60}
+              className="drop-shadow-lg"
+            />
+            <h1 className="text-5xl font-extrabold text-white drop-shadow-lg">
+              <span className="text-yellow-300">Dyna</span> : Steam Game Finder
+            </h1>
+          </div>
           <p className="text-blue-100 text-lg">Discover your next favorite game</p>
         </div>
       </div>
